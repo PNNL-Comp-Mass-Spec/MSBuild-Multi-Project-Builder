@@ -670,6 +670,8 @@ internal class MultiProjectBuilder : EventNotifier
             // Keys are column enum, values are column index
             var columnMap = new Dictionary<SolutionListFileColumns, int>();
 
+            var delimiters = new[] { ',', ';' };
+
             var lastSolutionID = 0;
             var lineNumber = 0;
 
@@ -747,7 +749,7 @@ internal class MultiProjectBuilder : EventNotifier
 
                 if (TryGetColumnValue(lineParts, columnMap, SolutionListFileColumns.PostBuildCopyList, out var postBuildCopyList))
                 {
-                    foreach (var item in postBuildCopyList.Split(','))
+                    foreach (var item in postBuildCopyList.Split(delimiters))
                     {
                         var trimmedItem = item.Trim();
                         if (string.IsNullOrWhiteSpace(trimmedItem))
@@ -759,7 +761,7 @@ internal class MultiProjectBuilder : EventNotifier
 
                 if (TryGetColumnValue(lineParts, columnMap, SolutionListFileColumns.CopyTargetDirectories, out var copyTargetDirectories))
                 {
-                    foreach (var item in copyTargetDirectories.Split(','))
+                    foreach (var item in copyTargetDirectories.Split(delimiters))
                     {
                         var trimmedItem = item.Trim();
                         if (string.IsNullOrWhiteSpace(trimmedItem))
