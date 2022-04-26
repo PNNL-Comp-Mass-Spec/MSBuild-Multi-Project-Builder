@@ -609,20 +609,20 @@ internal class MultiProjectBuilder : EventNotifier
                             continue;
                         }
 
-                        var targetFile = new FileInfo(Path.Combine(targetDirectory.FullName, sourceFile.Name));
-
-                        if (FilesMatch(sourceFile, targetFile))
+                        if (previewMode)
                         {
-                            OnDebugEvent("Files match; skipping copy of {0} to {1}",
+                            OnDebugEvent("Preview copy of {0} to {1}",
                                 PathUtils.CompactPathString(sourceFile.FullName, 80),
                                 PathUtils.CompactPathString(targetDirectory.FullName, 80));
 
                             continue;
                         }
 
-                        if (previewMode)
+                        var targetFile = new FileInfo(Path.Combine(targetDirectory.FullName, sourceFile.Name));
+
+                        if (FilesMatch(sourceFile, targetFile))
                         {
-                            OnDebugEvent("Preview copy of {0} to {1}",
+                            OnDebugEvent("Files match; skipping copy of {0} to {1}",
                                 PathUtils.CompactPathString(sourceFile.FullName, 80),
                                 PathUtils.CompactPathString(targetDirectory.FullName, 80));
 
