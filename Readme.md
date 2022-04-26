@@ -21,7 +21,7 @@ MSBuildMultiProjectBuilder.exe
 
 The input file path is a Solution List File
 * Tab-delimited text file that lists paths to the Visual Studio solutions to build
-* It can optionally include a comma separated list of file names to copy (wildcards are accepted), along with one or more target directories (comma separated)
+* It can optionally include a comma or semicolon separated list of file names to copy (wildcards are accepted), along with one or more target directories (comma or semicolon separated)
 * It can optionally also include the relative or absolute path to a batch file to run after the build completes
 * The expected column names are shown in the following table
   * Columns `ID` and `SolutionPath` are required; the others are optional

@@ -8,7 +8,7 @@ internal class MultiProjectBuilderOptions
 {
     // Ignore Spelling: wildcards
 
-    public const string PROGRAM_DATE = "April 25, 2022";
+    public const string PROGRAM_DATE = "April 26, 2022";
 
     /// <summary>
     /// Solution list file
@@ -17,8 +17,8 @@ internal class MultiProjectBuilderOptions
     [Option("SolutionListFilePath", "InputFilePath", "I",
         ArgPosition = 1, Required = true, HelpShowsDefault = false, IsInputFilePath = true,
         HelpText = "Tab-delimited text file that lists the Visual Studio solutions to build. " +
-                   "It can optionally include a comma separated list of file names to copy (wildcards are accepted), " +
-                   "along with one or more target directories (comma separated). " +
+                   "It can optionally include a comma or semicolon separated list of file names to copy (wildcards are accepted), " +
+                   "along with one or more target directories (comma or semicolon separated). " +
                    "It can optionally also include the relative or absolute path to a " +
                    "batch file to run after the build completes.\n\n" +
                    "Required columns:\n" +
@@ -32,8 +32,8 @@ internal class MultiProjectBuilderOptions
     /// </summary>
     [Option("BaseDirectoryPath", "BasePath",
         HelpShowsDefault = false,
-        HelpText = "Directory path to use for any .sln files in the solution list file that are a relative path (not rooted). " +
-                   "Also used when the target directory for the post build copy is a relative path." )]
+        HelpText = "Directory path to use for any .sln files in the solution list file that are a relative path (not rooted)\n" +
+                   "Also used when the target directory for the post build copy is a relative path" )]
     public string BaseDirectoryPath { get; set; }
 
     /// <summary>
