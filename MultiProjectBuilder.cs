@@ -25,7 +25,8 @@ internal class MultiProjectBuilder : EventNotifier
         BuildArgs = 2,
         PostBuildCopyList = 3,
         CopyTargetDirectories = 4,
-        PostBuildBatchFile = 5
+        PostBuildBatchFile = 5,
+        Comment = 6
     }
 
     public MultiProjectBuilderOptions Options { get; set; }
@@ -431,6 +432,10 @@ internal class MultiProjectBuilder : EventNotifier
             {
                 columnMap.Add(SolutionListFileColumns.PostBuildBatchFile, i);
             }
+            else if (lineParts[i].StartsWith("Comment", StringComparison.OrdinalIgnoreCase))
+            {
+                columnMap.Add(SolutionListFileColumns.Comment, i);
+            }
             else
             {
                 OnWarningEvent("Ignoring unrecognized header column in the Solution List File: " + lineParts[i]);
@@ -589,6 +594,7 @@ internal class MultiProjectBuilder : EventNotifier
                             LogWarning(consoleOutputWriter,
                                 "Error: Target directory is a relative path and the base directory path is not defined; " +
                                 "skipping post build copy to: {0}", targetDirectoryPath);
+
                             continue;
                         }
 

@@ -24,7 +24,7 @@ internal class MultiProjectBuilderOptions
                    "Required columns:\n" +
                    "ID    SolutionPath\n\n" +
                    "Optional columns:\n" +
-                   "BuildArgs    PostBuildCopyList    CopyTargetDirectories    PostBuildBatchFile")]
+                   "BuildArgs    PostBuildCopyList    CopyTargetDirectories    PostBuildBatchFile    Comment")]
     public string SolutionListFilePath { get; set; }
 
     /// <summary>
